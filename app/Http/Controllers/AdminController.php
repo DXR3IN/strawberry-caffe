@@ -3,26 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cafe;
+use App\Models\CustomerTable;
 use App\Models\MenuCategory;
 use App\Models\Order;
+use App\Models\Table;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function login(){
-        return view('login');
-    }
 
     public function adminPage(){
+        $customer = CustomerTable::count();
+        $menu = Cafe::count();
         $totalOrders = Order::sum('total_price');
-        return view('admin.index')->with(compact('totalOrders'));
-    }
-
-    public function shippedOrder($order_id){
-
+        return view('admin.index')->with(compact('totalOrders','customer','menu'));
     }
 
     public function pesananPage(){
@@ -67,4 +65,49 @@ class AdminController extends Controller
 
         return redirect('/strawberry/admin/menu')->with('success', 'data berhasil disimpan');
     }
+
+    public function deleteDataMenu($id){
+        $menus = Cafe::findOrFail($id);
+        //delete foto jika ada
+        if(File::exists(public_path('assets/img/menu'.$menus->image_menu))){
+            File::delete(public_path('assets/img/menu'.$menus->image_menu));
+        }
+
+        //hapus movie record dari database
+        $menus->delete();
+
+        return redirect('/strawberry/admin/menu')->with('success', 'Data berhasil dihapus');
+    }
+
+    public function updateDataPage($id){
+        $cafe = Cafe::find($id);
+        $menuCategories = MenuCategory::all();
+
+        return view('admin.edit')->with(compact('cafe', 'menuCategories'));
+    }
+
+    public function meja(){
+        $tables = Table::all();
+        return view('admin.addmeja')->with(compact('tables'));
+    }
+
+    public function addDataMeja(Request $request){
+        $randomName = Str::uuid()->toString();
+        $fileExtension = $request->file('image_menu')->getClientOriginalExtension();
+        $filename = $randomName . '.' . $fileExtension;
+
+        //simpan file foto ke folder public/images
+        $request->file('image_menu')->move(public_path('assets/img/meja'), $filename);
+
+        //simpan data ketabel cafes
+        Cafe::create([
+            'nama_table'=>$request->nama_table,
+            'menu_id'=>$request->menu_id,
+            'harga'=>$request->harga,
+            'keterangan'=>$request->keterangan,
+        ]);
+
+        return redirect('/strawberry/admin/meja')->with('success', 'data berhasil disimpan');
+    }
+
 }

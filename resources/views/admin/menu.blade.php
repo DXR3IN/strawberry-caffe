@@ -45,7 +45,8 @@
                                     <span class="text-xs font-semibold leading-tight text-slate-400">{{$menu->created_at}}</span>
                                 </td>
                                 <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                    <a href="javascript:;" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a>
+                                    <a href="{{route('menu-delete', ['id' => $menu->id])}}" onclick="return confirm('Apakah anda yakin mau menghapus data ini?')" class="text-xs font-semibold leading-tight text-slate-400">hapus</a>
+                                    <a href="{{route('menu-update', ['id'=>$menu->id])}}" class="text-xs font-semibold leading-tight text-slate-400"> Edit </a>
                                 </td>
                             </tr>
                         @endforeach
@@ -70,7 +71,6 @@
                                     <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Id</th>
                                     <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Nama Kategori</th>
                                     <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Logo</th>
-                                    <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70"></th>
                                   </tr>
                                 </thead>
                                 <tbody >
@@ -88,9 +88,6 @@
                                               <div>
                                                 <ion-icon name="{{$menuCategory->ion_icon}}" class="text-white text-2xl"></ion-icon>
                                               </div>
-                                          </td>
-                                          <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                              <a href="javascript:;" class="text-xs font-semibold leading-tight text-white"> Edit </a>
                                           </td>
                                       </tr>
                                   @endforeach

@@ -26,13 +26,13 @@
         function toggleMenu(e) {
             e.name = e.name === 'menu' ? 'close' : 'menu';
             // Menggunakan properti style.top untuk mengubah nilai top
-            navLinks.style.top = e.name === 'menu' ? '-200%' : '105%';
+            navLinks.style.top = e.name === 'menu' ? '-210%' : '115%';
         }
 
     </script>
 
 <script>
-    const words = ["Welcome to", "Your beloved", "and only cafe"];
+    const words = ["Welcome to", "Your beloved", "And only cafe"];
     let i = 0;
     let j = 0;
     let currentWord = "";
@@ -57,7 +57,7 @@
           isDeleting = true;
         }
       }
-      setTimeout(type, 300);
+      setTimeout(type, 200);
     }
 
     type();

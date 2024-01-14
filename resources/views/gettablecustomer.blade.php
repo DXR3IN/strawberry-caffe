@@ -32,14 +32,13 @@
     @endif
     <form action="/table/get" method="POST">
         @csrf
-        <div class="flex justify-center items-center shadow-md rounded-3xl h-auto w-auto bg-gradient-to-l from-green-400 via-yellow-300 to-red-500 p-10 m-6">
+        <div class="flex justify-center items-center shadow-md rounded-3xl h-auto w-auto  p-10 m-6">
             <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-2">
-                <ul class="grid w-full gap-6 md:grid-cols-3">
                 @foreach ($customertables as $customertable)
                 <div class="animate-fade-left animate-once">
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-t-lg" src="{{$customertable->image_table}}" alt="" />
+                            <img class="rounded-t-lg" src="../assets/img/meja/{{$customertable->image_table}}" alt="" />
                         </a>
                         <div class="p-5">
                             <a href="#">
@@ -53,21 +52,11 @@
                         </div>
                     </div>
                 </div>
-                    <input type="radio" id="table_id" name="table_id" value="{{ $customertable->id }}" class="hidden peer" required>
-                    <label for="hosting-small" class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
-
-                            <img src="{{ $customertable->image_table }}" class="w-10 rounded-full mx-auto"
-                                alt="">
-                        <div class="w-full text-lg font-semibold">{{ $customertable->nama_table }}</div>
-                        <svg class="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
-                        </svg>
-                    </label>
                 @endforeach
             </div>
         </div>
         <div class="flex justify-center items-center h-auto w-auto ">
-            <div class="gid bg-gradient-to-l from-green-400 via-yellow-300 to-red-500 p-10 m-6 shadow-md rounded-3xl">
+            <div class="gid  p-10 m-6 shadow-md rounded-3xl">
                 <label for="nama-pelanggan" class="block mb-2 text-xl font-josefin font-semibold text-green-600 ">Isi nama anda dibawah ini sesuai dengan saat anda reservasi!</label>
                 <div class="flex">
                     <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-green-800 rounded-l-md">

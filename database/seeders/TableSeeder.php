@@ -17,14 +17,20 @@ class TableSeeder extends Seeder
         Table::create(array(
             'id'=>3001,
             'nama_table'=>'1A',
-            'image_table'=>'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBMlET2f9O28dl3QydR-7_EeHURRjx-cdaAYFNc9RBPA&s',
+            'image_table'=>'table1.jpg',
             'kapasitas'=>5,
             'keterangan_table'=>'Berada didepan kasir'
         ));
         Table::create(array(
             'id'=>3002,
             'nama_table'=>'1B',
-            'image_table'=>'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi1O_PlcVTf_-Ly9JHBxPle6bFhO-JhvFlWLb9oxJRrA&s',
+            'image_table'=>'table2.jpg',
+            'kapasitas'=>4,
+            'keterangan_table'=>'Berada dibagian belakang lantai 1'
+        ));
+        Table::create(array(
+            'nama_table'=>'2A',
+            'image_table'=>'table3.jpg',
             'kapasitas'=>4,
             'keterangan_table'=>'Berada dibagian belakang lantai 1'
         ));

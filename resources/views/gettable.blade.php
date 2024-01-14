@@ -8,13 +8,13 @@
     </div>
     <form action="/table/make" method="POST">
         @csrf
-        <div class="flex justify-center items-center shadow-md rounded-3xl h-auto w-auto bg-gradient-to-l from-green-400 via-yellow-300 to-red-500 p-10 m-6">
+        <div class="flex justify-center items-center shadow-md rounded-3xl h-auto w-auto p-10 m-6">
             <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-2">
                 @foreach ($tables as $table)
                 <div class="animate-fade-left animate-once">
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            <img class="rounded-t-lg" src="{{$table->image_table}}" alt="" />
+                            <img class="rounded-t-lg" src="../assets/img/meja/{{$table->image_table}}" alt="" />
                         </a>
                         <div class="p-5">
                             <a href="#">
@@ -31,7 +31,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="flex justify-center items-center shadow-md rounded-3xl h-auto w-auto bg-gradient-to-l from-green-400 via-yellow-300 to-red-500 p-10 m-6">
+        <div class="flex justify-center items-center shadow-md rounded-3xl h-auto w-auto  p-10 m-6">
             <div class="gid">
                 <label for="nama-pelanggan" class="block mb-2 text-xl font-josefin font-semibold text-green-600 ">Tolong isi nama anda dibawah ini!</label>
                 <div class="flex">

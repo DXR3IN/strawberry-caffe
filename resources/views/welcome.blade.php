@@ -3,8 +3,8 @@
 @section('title', 'Main')
 
 @section('content')
-    <div class="flex flex-col ... cursor-pointer mx-20 h-screen">
-        <div class="md:ml-6 bg-cover bg-no-repeat h-full" style="background-image: url('../assets/frontstrawberry.png')">
+    <div class="flex flex-col ... cursor-pointer mx-20 mb-6 md:mt-44">
+        <div class="md:ml-6 bg-cover bg-no-repeat h-auto p-6">
             <div class="animate-fade-left animate-once flex justify-start w-[40%] h-14">
                 <h1 class="md:text-4xl text-green-600 font-josefin text-3xl" id="typewriter">Wellcome To</h1>
             </div>
@@ -24,6 +24,11 @@
             <div class="w-[50%] mb-10">
                 <p class="text-xl font-josefin animate-fade-right animate-once">Selamat datang di StrawberryCaffe, sebuah tempat yang memukau dan memanjakan indera Anda dengan kehangatan dan pesona yang unik. </p>
             </div>
+            <form action="/logout" method="POST">
+                @csrf
+                <button type="submit">Logout</button>
+            </form>
+
 
         </div>
     </div>

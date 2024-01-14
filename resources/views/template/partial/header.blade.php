@@ -7,7 +7,7 @@
 
             </span>
         </div>
-        <div class="nav-links md:static md:min-h-fit absolute min-h-auto left-0 md:w-auto w-full top-[-200%] pt-1 pb-2 px-6 font-josefin">
+        <div class="nav-links md:static md:min-h-fit absolute min-h-auto left-0 md:w-auto w-full top-[-210%] pt-1 pb-2 px-6 font-josefin">
             <div class="bg-white md:p-0 p-3 rounded-2xl shadow-md">
                 <ul class=" md:flex-row flex-col flex items-center gap-[4vw]">
                     <li class="">
@@ -32,6 +32,17 @@
             </div>
         </div>
         <div class="w-auto flex items-center justify-between">
+            @auth
+                @if(auth()->check() && auth()->user()->usertype == 'admin')
+                    <span class="text-red-600 font-josefin duration-500 w-auto h-auto mr-3">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <a href="/strawberry/admin">Admin</a>
+                    </span>
+                    <span class="bg-red-500 w-1 h-auto">
+
+                    </span>
+                @endif
+            @endauth
             @if(session('nama_customer') && session('table_id'))
                 <form action="{{route('tableOut')}}" method="post">
                     @csrf
