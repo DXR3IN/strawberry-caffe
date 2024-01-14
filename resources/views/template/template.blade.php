@@ -18,17 +18,6 @@
 
     @include('template.partial.footer')
 
-    @if (isset($searchPerformed) && $searchPerformed)
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Scroll to the "Menu" section with smooth animation
-                document.getElementById('Menu').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        </script>
-    @endif
-
     <script>
 
         // ini adalah code yang digunakan untuk membuat navigation bar menjadi responsif
@@ -41,5 +30,39 @@
         }
 
     </script>
+
+<script>
+    const words = ["Welcome to", "Your beloved", "and only cafe"];
+    let i = 0;
+    let j = 0;
+    let currentWord = "";
+    let isDeleting = false;
+
+    function type() {
+      currentWord = words[i];
+      if (isDeleting) {
+        document.getElementById("typewriter").textContent = currentWord.substring(0, j-1);
+        j--;
+        if (j == 0) {
+          isDeleting = false;
+          i++;
+          if (i == words.length) {
+            i = 0;
+          }
+        }
+      } else {
+        document.getElementById("typewriter").textContent = currentWord.substring(0, j+1);
+        j++;
+        if (j == currentWord.length) {
+          isDeleting = true;
+        }
+      }
+      setTimeout(type, 300);
+    }
+
+    type();
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 </body>
 </html>

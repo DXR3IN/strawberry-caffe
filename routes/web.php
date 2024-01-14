@@ -25,7 +25,9 @@ Route::get('/about-us', function () {
 });
 
 //Main page route
-Route::get('/', [CafeController::class, 'index'])->middleware('guest');
+Route::get('/', [CafeController::class, 'welcome'])->middleware('guest');
+
+Route::get('/menu', [CafeController::class, 'index'])->name('menu');
 
 //Route untuk menghapus menu dari cart
 Route::get('/remove/{cart_id}', [CafeController::class, 'removeFromCustomerCart'])->name('cart-remove');
@@ -41,7 +43,7 @@ Route::get('/table/get', [TableController::class, 'getTableforCustomer']);
 Route::post('/table/get', [TableController::class, 'ambilPilihanMeja']);
 
 //Route keluar dari pesanan
-Route::post('/table/out', [TableController::class, 'KeluarPilihanMeja']);
+Route::post('/table/out', [TableController::class, 'KeluarPilihanMeja'])->name('tableOut');
 
 //Route untuk menambahkan cart
 Route::get('/caffe/{id}', [CafeController::class, 'addToCustomerCart'])->name('addtocustomermenu.to.cart');
@@ -63,6 +65,8 @@ Route::get('/strawberry/admin/pesanan', [AdminController::class, 'pesananPage'])
 Route::get('/strawberry/admin/menu', [AdminController::class, 'menuPage']);
 
 Route::get('/strawberry/admin/addmenu', [AdminController::class, 'addMenu'])->name('addMenu');
+
+Route::post('/strawberry/admin/addmenu', [AdminController::class, 'addDataMenu'])->name('addDataMenu');
 
 
 

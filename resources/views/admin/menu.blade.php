@@ -56,6 +56,51 @@
               </div>
             </div>
           </div>
+          <div class="flex justify-items-end mb-6">
+            <div class="w-full max-w-full px-3 lg:w-5/12 lg:flex-none">
+                    <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border p-4">
+                        <div class="p-6 pb-0 mb-0 bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                            <h6>Kategori Menu</h6>
+                          </div>
+                          <div class="flex-auto px-0 pt-0 pb-2">
+                            <div class="p-0 overflow-x-auto">
+                              <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
+                                <thead class="align-bottom">
+                                  <tr>
+                                    <th class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Id</th>
+                                    <th class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Nama Kategori</th>
+                                    <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">Logo</th>
+                                    <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70"></th>
+                                  </tr>
+                                </thead>
+                                <tbody >
+                                  @foreach ($menuCategories as $menuCategory)
+                                      <tr class="bg-{{$menuCategory->color_logo}}-500">
+                                          <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                              <div class="flex px-2 py-1">
+                                                <h6 class="mb-0 text-sm leading-normal text-white">{{$menuCategory->id}}</h6>
+                                              </div>
+                                          </td>
+                                          <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                            <h6 class="mb-0 text-sm leading-normal text-white">{{$menuCategory->menu_kategori}}</h6>
+                                          </td>
+                                          <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                              <div>
+                                                <ion-icon name="{{$menuCategory->ion_icon}}" class="text-white text-2xl"></ion-icon>
+                                              </div>
+                                          </td>
+                                          <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                              <a href="javascript:;" class="text-xs font-semibold leading-tight text-white"> Edit </a>
+                                          </td>
+                                      </tr>
+                                  @endforeach
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                    </div>
+            </div>
+          </div>
           <div class="flex flex-wrap -mx-3">
             <!-- card1 -->
             <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">

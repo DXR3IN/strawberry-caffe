@@ -29,7 +29,7 @@ class TableController extends Controller
         // Simpan data ke dalam sesi
         session(['nama_customer' => $request->nama_customer, 'table_id' => $request->table_id]);
 
-        return redirect('/')->with('success_berhasil', 'Reservasi anda berhasil');
+        return redirect('/menu')->with('success_berhasil', 'Reservasi anda berhasil');
     }
 
     // public function simpanPilihanMeja(Request $request)
@@ -76,7 +76,7 @@ class TableController extends Controller
             // Simpan data ke dalam sesi
             session(['nama_customer' => $request->nama_customer, 'table_id' => $request->table_id]);
 
-            return redirect('/')->with('success_berhasil', 'Halo lagi!');
+            return redirect('/menu')->with('success_berhasil', 'Halo lagi!');
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
             // Handle ketika data tidak ditemukan
             return back()->withErrors(['error' => 'Nama customer atau table_id tidak ditemukan dalam database.']);
@@ -88,7 +88,7 @@ class TableController extends Controller
     {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/');
+        return redirect('/menu');
     }
 
 

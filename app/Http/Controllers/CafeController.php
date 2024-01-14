@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 
 class CafeController extends Controller
 {
+
+    public function welcome(){
+        return view('welcome');
+    }
     public function index()
     {
 
@@ -18,12 +22,6 @@ class CafeController extends Controller
         $menu_categories = MenuCategory::all();
 
         $searchPerformed = false;
-
-        if (request('search')) {
-            $searchTerm = request('search');
-            $query->where('nama_menu', 'like', '%' . $searchTerm . '%');
-            $searchPerformed = true;
-        }
 
         $selectedMenuIds = request('menu_ids');
 
@@ -34,7 +32,7 @@ class CafeController extends Controller
 
         $cafes = $query->paginate(6)->withQueryString();
 
-        return view('welcome')->with(compact('cafes', 'menu_categories','searchPerformed'));
+        return view('menu')->with(compact('cafes', 'menu_categories','searchPerformed'));
     }
 
     public function cart(){
@@ -102,7 +100,7 @@ class CafeController extends Controller
         $query = CustomerTable::latest();
 
         if (!session()->has('nama_customer')) {
-            return redirect('/')->with('error', 'Anda harus memiliki meja dahulu sebelum bisa memesan');
+            return redirect('/menu')->with('error', 'Anda harus memiliki meja dahulu sebelum bisa memesan');
         }
 
         $customer = CustomerTable::where('nama_customer', session('nama_customer'))->where('table_id', session('table_id'))->value('id');
@@ -121,9 +119,9 @@ class CafeController extends Controller
 
             session()->forget('cart');
 
-            
 
-            return redirect('/')->with('success', 'Pesanan berhasil!');
+
+            return redirect('/menu')->with('success', 'Pesanan berhasil!');
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal membuat pesanan. Silakan coba lagi.');
