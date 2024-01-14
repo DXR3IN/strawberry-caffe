@@ -79,6 +79,10 @@ Route::group(['middleware' => ['auth']], function(){
         Route::get('/strawberry/admin/{id}/delete', [AdminController::class, 'deleteDataMenu'])->name('menu-delete');
 
         Route::get('/strawberry/admin/meja', [AdminController::class, 'meja'])->name('meja');
+
+        Route::post('/strawberry/admin/meja', [AdminController::class, 'addDataMeja'])->name('meja-add');
+
+        Route::get('/admin/logout-all-users', 'AdminController@logoutAllUsers')->name('admin-logout-all');
     });
 });
 

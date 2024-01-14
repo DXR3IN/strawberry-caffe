@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -20,7 +21,8 @@ class AdminController extends Controller
         $customer = CustomerTable::count();
         $menu = Cafe::count();
         $totalOrders = Order::sum('total_price');
-        return view('admin.index')->with(compact('totalOrders','customer','menu'));
+        $orderQuantity = Order::sum('quantity');
+        return view('admin.index')->with(compact('totalOrders','customer','menu','orderQuantity'));
     }
 
     public function pesananPage(){
@@ -93,21 +95,22 @@ class AdminController extends Controller
 
     public function addDataMeja(Request $request){
         $randomName = Str::uuid()->toString();
-        $fileExtension = $request->file('image_menu')->getClientOriginalExtension();
+        $fileExtension = $request->file('image_table')->getClientOriginalExtension();
         $filename = $randomName . '.' . $fileExtension;
 
         //simpan file foto ke folder public/images
-        $request->file('image_menu')->move(public_path('assets/img/meja'), $filename);
+        $request->file('image_table')->move(public_path('assets/img/meja'), $filename);
 
         //simpan data ketabel cafes
-        Cafe::create([
+        Table::create([
             'nama_table'=>$request->nama_table,
-            'menu_id'=>$request->menu_id,
-            'harga'=>$request->harga,
-            'keterangan'=>$request->keterangan,
+            'image_table'=>$filename,
+            'kapasitas'=>$request->kapasitas,
+            'keterangan_table'=>$request->keterangan_table,
         ]);
 
         return redirect('/strawberry/admin/meja')->with('success', 'data berhasil disimpan');
     }
+
 
 }

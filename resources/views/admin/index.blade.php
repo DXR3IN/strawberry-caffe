@@ -12,10 +12,9 @@
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Today's Money</p>
+                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Total Penghasilan</p>
                       <h5 class="mb-0 font-bold">
-                        $53,000
-                        <span class="text-sm leading-normal font-weight-bolder text-lime-500">+55%</span>
+                        Rp. {{ number_format($totalOrders, 0, ",", ".")}}
                       </h5>
                     </div>
                   </div>
@@ -38,7 +37,7 @@
                     <div>
                       <p class="mb-0 font-sans text-sm font-semibold leading-normal">Total Menu</p>
                       <h5 class="mb-0 font-bold">
-                        {{$menu}}
+                        {{$menu}} seluruh menu
                       </h5>
                     </div>
                   </div>
@@ -61,7 +60,7 @@
                     <div>
                       <p class="mb-0 font-sans text-sm font-semibold leading-normal">Total Pelanggan</p>
                       <h5 class="mb-0 font-bold">
-                        {{$customer}}
+                        {{$customer}} pelanggan
                       </h5>
                     </div>
                   </div>
@@ -82,9 +81,9 @@
                 <div class="flex flex-row -mx-3">
                   <div class="flex-none w-2/3 max-w-full px-3">
                     <div>
-                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Sales</p>
+                      <p class="mb-0 font-sans text-sm font-semibold leading-normal">Total Sale</p>
                       <h5 class="mb-0 font-bold">
-                        Rp. {{ number_format($totalOrders, 0, ",", ".")}}
+                        {{$orderQuantity}} menu yang terjual
                       </h5>
                     </div>
                   </div>
@@ -107,11 +106,11 @@
                 <div class="flex flex-wrap -mx-3">
                   <div class="max-w-full px-3 lg:w-1/2 lg:flex-none">
                     <div class="flex flex-col h-full">
-                      <p class="pt-2 mb-1 font-semibold">Built by developers</p>
-                      <h5 class="font-bold">Soft UI Dashboard</h5>
+                      <p class="pt-2 mb-1 font-semibold">StrawberryCaffe</p>
+                      <h5 class="font-bold">Dashboard</h5>
                       <p class="mb-12">From colors, cards, typography to complex elements, you will find the full documentation.</p>
-                      <a class="mt-auto mb-0 text-sm font-semibold leading-normal group text-slate-500" href="javascript:;">
-                        Read More
+                      <a class="mt-auto mb-0 text-sm font-semibold leading-normal group text-slate-500" href="/menu">
+                        Shopping Page
                         <i class="fas fa-arrow-right ease-bounce text-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
                       </a>
                     </div>
