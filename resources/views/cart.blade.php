@@ -1,9 +1,9 @@
 @extends('template.template')
 
-@section('title', 'Main')
+@section('title', 'Cart')
 
 @section('content')
-<div class="relative overflow-x-auto p-5 bg-transparent">
+<div class="relative overflow-x-auto p-5 bg-transparent font-josefin">
     <div class="overflow-x-auto p-0 bg-white rounded-lg">
         <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
             <thead class="align-bottom">
@@ -42,13 +42,13 @@
                                 Rp. {{ number_format($detail_carts['price'], 0, ",", ".")}}
                             </td>
                             <td class="px-6 py-4">
-                                <input type="number" value="{{$detail_carts['quantity']}}" class="rounded-lg w-14 p-2 border border-gray-300 appearance-none focus:outline-none focus:border-blue-500" min="1">
+                                {{$detail_carts['quantity']}}
                             </td>
                             <td class="px-6 py-4">
                                 Rp. {{ number_format(($detail_carts['price'] * $detail_carts['quantity']), 0, ",", ".")}}
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('cart-remove', ['cart_id' => $detail_carts['menu_id']]) }}" class="cursor-pointer p-2 bg-red-700 text-white text-sm cart_remove" onclick="return confirm('Apakah anda yakin mau mengancel menu ini?')">batalkan</a>
+                                <a href="{{ route('cart-remove', ['cart_id' => $detail_carts['menu_id']]) }}" class="cursor-pointer p-2 bg-red-700 text-white text-sm rounded-lg cart_remove" onclick="return confirm('Apakah anda yakin mau mengancel menu ini?')">batalkan</a>
                             </td>
                         </tr>
                     @endforeach
@@ -57,11 +57,11 @@
         </table>
     </div>
     <div class="grid grid-cols-2 gap-4 rounded-lg">
-        <div class="bg-white my-4 p-10 rounded-lg">
-            Total : Rp. {{number_format($total, 0, ",", ".")}}
+        <div class="bg-white my-4 p-10 rounded-lg flex justify-center items-center">
+            Total : <span class="font-bold text-blue-600 text-xl">Rp. {{number_format($total, 0, ",", ".")}}</span>
         </div>
-        <div class="bg-white my-4 p-10 rounded-lg">
-            <a href="{{route('order')}}" class="bg-green-500 text-white p-2 rounded-lg">Pesan</a>
+        <div class="flex justify-center items-center my-4 p-10 rounded-lg">
+            <a href="{{route('order')}}" class="bg-green-500 text-white p-2 rounded-lg text-3xl">Pesan</a>
         </div>
     </div>
 </div>

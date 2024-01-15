@@ -1,6 +1,6 @@
 @extends('template.template')
 
-@section('title', 'Main')
+@section('title', 'Get Table')
 
 @section('content')
     <div class="mx-16 flex justify-center items-center p-8">

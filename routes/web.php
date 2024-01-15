@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth']], function(){
 
         Route::get('/strawberry/admin/{id}/update', [AdminController::class, 'updateDataPage'])->name('menu-update');
 
+        Route::post('/strawberry/admin/{id}/update', [AdminController::class, 'updateDataMenu']);
+
         Route::get('/strawberry/admin/{id}/delete', [AdminController::class, 'deleteDataMenu'])->name('menu-delete');
 
         Route::get('/strawberry/admin/meja', [AdminController::class, 'meja'])->name('meja');

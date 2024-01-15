@@ -1,6 +1,6 @@
 @extends('template.template')
 
-@section('title', 'Main')
+@section('title', 'About Us')
 
 @section('content')
 <div class="flex justify-center items-center text-8xl animate-fade-down animate-once font-bold bg-gradient-to-br from-orange-500 via-yellow-300 to-lime-500 bg-clip-text text-transparent">Meet Our Team</div>
@@ -15,7 +15,8 @@
             <div class="mt-10 animate-fade-left animate-once animate-delay-100 max-w-auto p-6 border-gray-200 rounded-lg grid md:grid-cols-4 gap-4">
                 <ion-icon name="logo-instagram" class="text-white text-5xl"></ion-icon>
                 <ion-icon name="logo-facebook" class="text-white text-5xl"></ion-icon>
-                <ion-icon name="logo-discord" class="text-white text-5xl"></ion-icon>
+                <a href="https://github.com/DXR3IN/strawberry-caffe"><ion-icon name="logo-github" class="text-white text-5xl"></ion-icon></a>
+
             </div>
         </div>
     </div>
@@ -23,7 +24,7 @@
 <div class="mx-24">
     <div class="flex flex-wrap mt-6 -mx-3">
         <div class="w-full px-3 mb-6 lg:mb-0 lg:w-7/12 lg:flex-none">
-          <div class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
+          <div class="relative flex flex-col min-w-0 break-words bg-white/30 backdrop-blur-md shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="flex-auto p-4">
               <div class="flex flex-wrap -mx-3">
                 <div class="max-w-full px-3 lg:w-1/2 lg:flex-none">
@@ -50,7 +51,7 @@
           </div>
         </div>
         <div class="w-full max-w-full px-3 lg:w-5/12 lg:flex-none">
-          <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border p-4">
+          <div class="border-black/12.5 shadow-soft-xl relative flex h-full min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white/30 backdrop-blur-md bg-clip-border p-4">
             <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../../assets/img/ivancik.jpg')">
               <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
               <div class="relative z-10 flex flex-col flex-auto h-full p-4">

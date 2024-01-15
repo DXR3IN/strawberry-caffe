@@ -68,6 +68,61 @@ class AdminController extends Controller
         return redirect('/strawberry/admin/menu')->with('success', 'data berhasil disimpan');
     }
 
+    public function updateDataMenu(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'nama_menu'=>'required|string',
+            'menu_id'=>'required|integer',
+            'harga'=>'required|integer',
+            'keterangan'=>'required|string',
+            'rating'=>'required|integer',
+            'image_menu'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        //jika validasi gagal, kembali lagi ke halaman edit dengan pesan error
+        if($validator->fails()){
+            return redirect('/strawberry/admin/menu')
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        //ambil data movie yang akan diupdate
+        $cafe=Cafe::findOrFail($id);
+
+        //Jika ada file yang diunggah, simpan file baru
+        if($request->hasFile('image_menu')){
+            $randomName = Str::uuid()->toString();
+            $fileExtension = $request->file('image_menu')->getClientOriginalExtension();
+            $filename = $randomName . '.' . $fileExtension;
+
+            //simpan file foto ke folder public/images
+            $request->file('image_menu')->move(public_path('assets/img/menu'), $filename);
+
+            //delete foto jika ada
+            if(File::exists(public_path('images/'.$cafe->image_menu))){
+                File::delete(public_path('images/'.$cafe->image_menu));
+            }
+
+            $cafe->update([
+                'nama_menu'=>$request->nama_menu,
+                'menu_id'=>$request->menu_id,
+                'harga'=>$request->harga,
+                'keterangan'=>$request->keterangan,
+                'rating'=>$request->rating,
+                'image_menu'=>$filename
+            ]);
+        }else{
+            $cafe->update([
+                'nama_menu'=>$request->nama_menu,
+                'menu_id'=>$request->menu_id,
+                'harga'=>$request->harga,
+                'keterangan'=>$request->keterangan,
+                'rating'=>$request->rating,
+            ]);
+        }
+
+        return redirect('/strawberry/admin/menu')->with('success', 'Data berhasil diubah');
+    }
+
     public function deleteDataMenu($id){
         $menus = Cafe::findOrFail($id);
         //delete foto jika ada

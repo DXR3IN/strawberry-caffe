@@ -119,7 +119,7 @@
                     <div class="h-full bg-gradient-to-tl from-purple-700 to-pink-500 rounded-xl">
                       <img src="../../assets/img/shapes/waves-white.svg" class="absolute top-0 hidden w-1/2 h-full lg:block" alt="waves" />
                       <div class="relative flex items-center justify-center h-full">
-                        <img class="relative z-20 w-full pt-6" src="../../assets/img/illustrations/rocket-white.png" alt="rocket" />
+                        <img class="relative z-20 w-full pt-6" src="../../assets/menu-page.png" alt="rocket" />
                       </div>
                     </div>
                   </div>
@@ -132,9 +132,9 @@
               <div class="relative h-full overflow-hidden bg-cover rounded-xl" style="background-image: url('../../assets/img/ivancik.jpg')">
                 <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
                 <div class="relative z-10 flex flex-col flex-auto h-full p-4">
-                  <h5 class="pt-2 mb-6 font-bold text-white">Work with the rockets</h5>
-                  <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
-                  <a class="mt-auto mb-0 text-sm font-semibold leading-normal text-white group" href="javascript:;">
+                  <h5 class="pt-2 mb-6 font-bold text-white">Muhammad Irfan</h5>
+                  <p class="text-white">BP | 2201082012</p>
+                  <a class="mt-auto mb-0 text-sm font-semibold leading-normal text-white group" href="/about-us">
                     Read More
                     <i class="fas fa-arrow-right ease-bounce text-sm group-hover:translate-x-1.25 ml-1 leading-normal transition-all duration-200"></i>
                   </a>

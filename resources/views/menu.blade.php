@@ -1,6 +1,6 @@
 @extends('template.template')
 
-@section('title', 'Main')
+@section('title', 'Menu')
 
 @section('content')
 
@@ -56,16 +56,13 @@
                         <h5 class="animate-fade-up animate-once mb-2 font-bold tracking-tight bg-gradient-to-l from-red-500 via-blue-500 to-green-500 text-transparent bg-clip-text md:text-8xl text-">Halo {{session('nama_customer')}}</h5>
                     </a>
                     <p class="mb-3 font-normal text-black ">Selamat datang, <span class="font-sans font-bold text-red-600">{{session('nama_customer')}}</span> silahkan pilih menu-menu yang anda mau <span>dibawah</span> ini</p>
-                    <form action="/table/out" method="post">
-                        @csrf
-                        <button class="animate-fade-right animate-once animate-delay-300 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none bg-red-700 hover:bg-red-600 focus:ring-red-800 gap-3">
+                        <a href="#Menu" class="animate-fade-right animate-once animate-delay-300 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none bg-red-700 hover:bg-red-600 focus:ring-red-800 gap-3">
                             <ion-icon name="add-circle-outline"></ion-icon>
                             Menu
                             <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                             </svg>
-                        </button>
-                    </form>
+                        </a>
                 </div>
             </div>
         </div>
@@ -108,7 +105,7 @@
                 <div class="flex pl-11">
                     <h1 class="font-josefin text-6xl text-green-500">Menu</h1>
                 </div>
-                <form action="/menu" method="GET">
+                <form action="#Menu" method="GET">
                     <div class="flex p-11 pt-1">
                         @foreach ($menu_categories as $menu_category)
                             <div class="flex items-center me-4">
@@ -120,7 +117,7 @@
                             </div>
                         @endforeach
                         <div class="flex items-center me-4">
-                            <button class="rounded-md bg-gradient-to-tr from-blue-600 to-pink-500 p-2 font-sans font-semibold text-white">filter</button>
+                            <a class="rounded-md bg-gradient-to-tr from-blue-600 to-pink-500 p-2 font-sans font-semibold text-white">filter</a>
                         </div>
                     </div>
                 </form>
@@ -143,7 +140,7 @@
                         Rate :
                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">{{$cafe->rating}}</span>
                     </div>
-                    
+
                     <div class="flex items-center mt-2.5 mb-5">
                         Quantity :
                         <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3">
@@ -165,8 +162,15 @@
     @if(session('nama_customer') && session('table_id'))
             <a href="{{route('customer-cart')}}">
                 <div class="cursor-pointer shadow-lg fixed w-12 h-12 bg-gradient-to-bl animate-wiggle animate-infinite animate-duration-[2000ms] from-blue-500 via-purple-600 to-red-600 rounded-full border-white right-0 bottom-0 md:m-12 m-6 p-10 flex justify-center items-center text-white">
-                    <span class="absolute w-7 h-7 bg-red-700 rounded-full top-0 left-0 flex justify-center items-center">{{count((array) session('cart'))}}</span>
-                    <ion-icon name="cart-outlined"></ion-icon>
+                        @php
+                            $totalQuantity = 0;
+                            $cart = session('cart', []);
+                            foreach ($cart as $item) {
+                                $totalQuantity += $item['quantity'];
+                            }
+                        @endphp
+
+                    <span class="absolute w-7 h-7 bg-red-700 rounded-full top-0 left-0 flex justify-center items-center">{{ $totalQuantity }}</span>
                     Cart
                 </div>
             </a>

@@ -9,7 +9,7 @@
     <title>StrawberryCaffe - @yield('title', 'Website')</title>
     @include('template.partial.link')
 </head>
-<body class="font-sans antialiased bg-no-repeat bg-cover bg-gradient-to-t from-red-400 to-purple-400" >
+<body class="font-josefin antialiased bg-no-repeat bg-cover bg-gradient-to-t from-red-400 to-purple-400" >
     @include('template.partial.header')
 
     <div class="mt-40">
@@ -57,7 +57,7 @@
           isDeleting = true;
         }
       }
-      setTimeout(type, 200);
+      setTimeout(type, 150);
     }
 
     type();

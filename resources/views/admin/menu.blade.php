@@ -136,7 +136,7 @@
                         </div>
                       </div>
                       <div class="px-3 text-right basis-1/3">
-                        <a href="{{route("addMenu")}}">
+                        <a href="">
                             <div class="inline-block w-12 h-12 text-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500">
                                 <i class="ni leading-none ni-world text-lg relative top-3.5 text-white"></i>
                             </div>

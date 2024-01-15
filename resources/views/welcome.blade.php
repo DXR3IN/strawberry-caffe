@@ -1,6 +1,6 @@
 @extends('template.template')
 
-@section('title', 'Main')
+@section('title', 'Welcome')
 
 @section('content')
     <div class="flex flex-col ... cursor-pointer mx-20 mb-6 md:mt-44">
