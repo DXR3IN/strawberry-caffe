@@ -86,10 +86,11 @@ class TableController extends Controller
 
     public function keluarPilihanMeja(Request $request)
     {
-        $request->session()->invalidate();
+        $request->session()->forget(['nama_customer', 'table_id']);
         $request->session()->regenerateToken();
         return redirect('/menu');
     }
+
 
 
 }
